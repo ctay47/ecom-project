@@ -1,2 +1,59 @@
-// src/styles.scss
-@import 'bulma/bulma';
+
+@import '~bulma/sass/utilities/_all';
+
+// Override Bulma variables
+$primary: #5C6AC4; // Example primary color
+$navbar-padding-vertical: 0.5rem;
+$navbar-padding-horizontal: 1rem;
+
+// Then import the rest of Bulma to apply these overrides
+@import '~bulma/bulma';
+
+// Custom Navbar Styles
+.navbar {
+  &.is-fixed-top {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 10;
+    border-bottom: 1px solid darken($primary, 10%);
+    background-color: rgba(255, 255, 255, 0.95); // Semi-transparent white
+
+    &:after {
+      content: '';
+      display: block;
+      clear: both;
+    }
+  }
+
+  &-brand {
+    .navbar-item {
+      img {
+        max-height: 3.5rem; // Adjust logo size
+      }
+    }
+
+    .burger {
+      @media (max-width: $tablet) {
+        display: block;
+      }
+    }
+  }
+
+  &-menu {
+    .navbar-start, .navbar-end {
+      @media (max-width: $tablet) {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    .navbar-item {
+      // Directly applying :hover and :focus styles
+      &:hover, &:focus {
+        background-color: lighten($primary, 20%);
+        color: $primary;
+      }
+    }
+  }
+}

@@ -1,6 +1,8 @@
 // src/App.js
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import 'bulma/css/bulma.min.css';
+import Navbar from './Components/Navbar';
 import HomePage from './Components/HomePage';
 import ProductPage from './Components/ProductPage';
 import ContactPage from './Components/ContactPage';
@@ -18,7 +20,9 @@ function App() {
           </ul>
         </nav>
 
+      <Navbar />
         <Routes>
+          <Route path="/products" element={<ProductPage />} />
           <Route path="/products" element={<ProductPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/" element={<HomePage />} />
